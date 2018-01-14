@@ -5,7 +5,7 @@ pipeline {
 
     stages {
         stage('Configure') {     
-            env.PATH = "${tool 'M2_HOME'}/bin:${env.PATH}"   
+            env.PATH = "${tool 'Maven_3_5_2'}/bin:${env.PATH}"   
         }
         stage('Build') { 
             steps { 
