@@ -1,26 +1,26 @@
 pipeline {
-    agent any 
+    agent any
+    def mvnHome = tool 'M2_HOME'
+   
 
     stages {
         stage('Build') { 
             steps { 
-                withMaven (maven : 'maven_3_5_2') {
-                  sh 'mvn clean compile' 
-                }
+                sh "${mvnHome}/bin/mvn clean compile" 
             }
         }
         stage('Test'){
             steps {
-                withMaven (maven : 'maven_3_5_2') {
-                  sh 'mvn test' 
-                }
+                
+                  sh "${mvnHome}/bin/mvn test" 
+                
             }
         }
         stage('Deploy') {
             steps {
-                withMaven (maven : 'maven_3_5_2') {
-                  sh 'mvn deploy' 
-                }
+                
+                  sh "${mvnHome}/bin/mvn deploy"
+                
             }
         }
     }
